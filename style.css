@@ -1,0 +1,19 @@
+body{
+    font-family: sans-serif;
+}
+
+div#header{
+    background-color: #129ABA;
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+img[src="logo.png"]{
+    float: left;
+    margin-bottom: 25px;
+    height: 100%;
+}
+
+button, input[type="submit"]{
+    background-color: #129ABA !important;
+}

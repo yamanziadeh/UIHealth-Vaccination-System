@@ -1,0 +1,39 @@
+-- Database Design --
+
+Tables: 
+ * Vaccine:
+   . Name
+   . coName
+   . numDoses
+   . Description
+   . storageID
+   . Availability
+   . onHold
+ * Nurse:
+   . Fname
+   . MI
+   . Lname
+   . EmployeeID
+   . age
+   . gender
+   . phoneNum
+   . address
+   . vGiven
+   . username
+   . password
+ * Patient:
+   . Fname
+   . MI
+   . Lname
+   . SSN
+   . age
+   . gender
+   . race
+   . Occupation
+   . medHistory
+   . phoneNum
+   . address
+   . username
+   . password
+   . vTaken
+   . eligibility
