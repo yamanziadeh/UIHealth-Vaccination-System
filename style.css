@@ -16,4 +16,29 @@ img[src="logo.png"]{
 
 button, input[type="submit"]{
     background-color: #129ABA !important;
+    border: none;
+}
+
+input[value="Delete"]{
+    background-color: rgb(186, 18, 18) !important;
+}
+
+div#admin{
+    width: 1500px;
+    margin: auto;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 400px auto;
+    column-gap: 50px;
+}
+
+div#forms{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+}
+
+div#nurseInfo{
+    width: 500px;
+    margin: auto;
 }
