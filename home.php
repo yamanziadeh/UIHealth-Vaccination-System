@@ -6,7 +6,6 @@
         if ($username){
             $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
 
-            // Step 1: connect to DB
             $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
             if($conn->connect_error) 
             {
