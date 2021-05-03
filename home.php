@@ -38,7 +38,15 @@
                     }
                     break;
                 case 'patient':
-                    # code...
+                    $myQ = "select * from patient where username='$username' and password='$password'";
+                    $results = $conn->query($myQ);
+                    if($results->num_rows == 0){
+                        print ("Error: False Credentials");
+                        exit;
+                    } else {
+                        $id = $results->fetch_object()->id;
+                        header("Location: patient.php?id=".$id);
+                    }
                     break;
             }
             
@@ -57,11 +65,11 @@
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>
-        <div style="margin:auto;width:400px">
+        <div id="homeDiv">
             <div class = "card">
                 <div class="card-body">
-                <center><h2 class="card-title">Login</h2></center>
-                <form action="home.php" method="POST">
+                    <center><h2 class="card-title">Login</h2></center>
+                    <form action="home.php" method="POST">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="username" name="username" class="form-control" id="username">
@@ -80,7 +88,24 @@
                         </div>
                         
                         <input type="submit" value="Login" class="btn btn-primary">
-                </form>
+                    </form>
+                </div>
+            </div>
+            <div class = "card">
+                <div class="card-body">
+                    <center><h2 class="card-title">Patient Registration</h2></center>
+                    <form action="home.php" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="username" name="username" class="form-control" id="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="password">
+                        </div>
+                        
+                        <input type="submit" value="Register" class="btn btn-primary">
+                    </form>
                 </div>
             </div>
         </div>

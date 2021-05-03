@@ -16,13 +16,11 @@ $myQ1 = "select * from vaccine where VName = '$VName'";
 $results = $conn->query($myQ1);
 
 if ($results->num_rows > 0){
-    $myQ2 = "select NumDoses from vaccine where VName = '$VName'";
+    $myQ2 = "select NumDoses, Availability from vaccine where VName = '$VName'";
     $results = $conn->query($myQ2);
-    $currNumDoses = $results->fetch_object()->NumDoses + $NumDoses;
-    
-    $myQ2 = "select Availability from vaccine where VName = '$VName'";
-    $results = $conn->query($myQ2);
-    $currAva = $results->fetch_object()->Availability + $NumDoses;
+    $row = $results->fetch_object();
+    $currNumDoses = $row->NumDoses + $NumDoses;
+    $currAva = $row->Availability + $NumDoses;
 
     $myQ3 = "update vaccine set NumDoses = '$currNumDoses', Availability = '$currAva' where VName = '$VName'";
     $results = $conn->query($myQ3);

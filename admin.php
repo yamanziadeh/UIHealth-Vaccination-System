@@ -14,7 +14,7 @@
         <div id="admin">
             <div>
                 <center><h3>Nurses</h3></center>
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                         <th scope="col">id</th>
@@ -91,7 +91,7 @@
             </div>
             <div>
                 <center><h3>Vaccines</h3></center>
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                         <th scope="col">Name</th>
@@ -106,7 +106,6 @@
                     <?php 
                         $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
 
-                        // Step 1: connect to DB
                         $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
                         if($conn->connect_error) 
                         {
@@ -121,7 +120,7 @@
                             <td>$row->NumDoses</td>
                             <td>$row->Availability</td>
                             <td>$row->OnHold</td>
-                            <td>$row->ID</td>
+                            <td>$row->id</td>
                             </tr>";
                         }
 
@@ -209,7 +208,7 @@
                         <div class = "card">
                             <div class="card-body">
                                 <center><h3 class="card-title">Delete Vaccine</h3></center>
-                                <form action="deleteNurse.php" method="POST">
+                                <form action="deleteVaccine.php" method="POST">
                                         <div class="mb-3">
                                             <label for="id" class="form-label">Vaccine ID:</label>
                                             <input type="id" name="id" class="form-control" id="id">

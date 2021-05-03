@@ -42,3 +42,11 @@ div#nurseInfo{
     width: 500px;
     margin: auto;
 }
+
+div#homeDiv{
+    margin:auto;
+    width:1000px;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+}
