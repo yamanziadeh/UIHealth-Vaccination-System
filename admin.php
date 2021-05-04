@@ -82,7 +82,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="Password" class="form-label">Password:</label>
-                                <input type="Password" name="Password" class="form-control" id="Password">
+                                <input type="text" name="Password" class="form-control" id="Password">
                             </div>
                             <input type="submit" value="Create" class="btn btn-primary">
                     </form>
@@ -134,7 +134,7 @@
                         <div class = "card">
                             <div class="card-body">
                             <center><h3 class="card-title">View Nurse</h3></center>
-                            <form action="viewInfo.php" method="POST">
+                            <form action="viewNurse.php" method="POST">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Nurse ID:</label>
                                         <input type="id" name="id" class="form-control" id="id">
@@ -147,7 +147,7 @@
                         <div class = "card">
                             <div class="card-body">
                             <center><h3 class="card-title">Update Nurse</h3></center>
-                            <form action="viewInfo.php" method="POST">
+                            <form action="updateNurse.php" method="GET">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Nurse ID:</label>
                                         <input type="id" name="id" class="form-control" id="id">
@@ -173,7 +173,7 @@
                         <div class = "card">
                             <div class="card-body">
                                 <center><h3 class="card-title">View Patient</h3></center>
-                                <form action="viewInfo.php" method="POST">
+                                <form action="viewPatient.php" method="POST">
                                         <div class="mb-3">
                                             <label for="id" class="form-label">Patient ID:</label>
                                             <input type="id" name="id" class="form-control" id="id">
