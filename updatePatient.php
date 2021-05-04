@@ -10,7 +10,6 @@
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>
-        <center><h2>Update Nurse</h2></center>
         <?php
         $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
 
@@ -25,25 +24,29 @@
             $FName = $_POST["FName"];
             $MI = $_POST["MI"];
             $LName = $_POST["LName"];
+            $SSN = $_POST["SSN"];
             $Address = $_POST["Address"];
             $Age = $_POST["Age"];
             $Gender = $_POST["Gender"];
+            $Race = $_POST["Race"];
+            $Occupation = $_POST["Occupation"];
+            $medicalHistory = $_POST["medicalHistory"];
             $phoneNum = $_POST["phoneNum"];
             $Username = $_POST["Username"];
             $Password = $_POST["Password"];
     
-            $myQ = "update nurse
-    set FName = '$FName', LName = '$LName', MI = '$MI', age = '$Age', gender = '$Gender', username = '$Username', password = '$Password' 
+            $myQ = "update patient
+    set FName = '$FName', LName = '$LName', MI = '$MI', SSN = '$SSN', address = '$Address', phoneNum = '$phoneNum', medicalHistory = '$medicalHistory', age = '$Age', race = '$Race', occupation = '$Occupation', gender = '$Gender',  username = '$Username', password = '$Password' 
     where id='$id'";
     
             $results = $conn->query($myQ);
 
-            header("Location: admin.php");
+            header("Location: patient.php?id=$id");
         }
         
 
         $id = $_GET['id'];
-        $myQ = "select * from nurse where id = '$id'";
+        $myQ = "select * from patient where id = '$id'";
         $results = $conn->query($myQ);
         $row = $results->fetch_object();
 
@@ -52,7 +55,7 @@
                 <div class = 'card' style='width:500px; margin: auto'>
                     <div class='card-body'>
                     <center><h3 class='card-title'>$row->FName $row->LName</h3></center>
-                    <form action='updateNurse.php' method='POST'>
+                    <form action='updatePatient.php' method='POST'>
                             <input type='hidden' id='id' name='id' value='$row->id' />
                             <div class='mb-3'>
                                 <label for='FName' class='form-label'>First Name:</label>
@@ -67,8 +70,12 @@
                                 <input type='LName' name='LName' value = '$row->LName' class='form-control' id='LName'>
                             </div>
                             <div class='mb-3'>
+                                <label for='SSN' class='form-label'>SSN:</label>
+                                <input type='SSN' name='SSN' value = '$row->SSN' class='form-control' id='SSN'>
+                            </div>
+                            <div class='mb-3'>
                                 <label for='Address' class='form-label'>Address:</label>
-                                <input type='Address' name='Address'  value = '$row->address' class='form-control' id='Address' disabled>
+                                <input type='Address' name='Address'  value = '$row->address' class='form-control' id='Address'>
                             </div>
                             <div class='mb-3'>
                                 <label for='Age' class='form-label'>Age:</label>
@@ -79,8 +86,20 @@
                                 <input type='Gender' name='Gender' value = '$row->gender' class='form-control' id='Gender'>
                             </div>
                             <div class='mb-3'>
+                                <label for='Race' class='form-label'>Race:</label>
+                                <input type='Race' name='Race' value = '$row->race' class='form-control' id='Race'>
+                            </div>
+                            <div class='mb-3'>
+                                <label for='Occupation' class='form-label'>Occupation:</label>
+                                <input type='Occupation' name='Occupation' value = '$row->occupation' class='form-control' id='Occupation'>
+                            </div>
+                            <div class='mb-3'>
                                 <label for='phoneNum' class='form-label'>Phone Number:</label>
-                                <input type='phoneNum' name='phoneNum' value = '$row->phoneNum' class='form-control' id='phoneNum' disabled>
+                                <input type='phoneNum' name='phoneNum' value = '$row->phoneNum' class='form-control' id='phoneNum'>
+                            </div>
+                            <div class='mb-3'>
+                                <label for='medicalHistory' class='form-label'>Medical History:</label>
+                                <input type='medicalHistory' name='medicalHistory' value = '$row->medicalHistory' class='form-control' id='medicalHistory'>
                             </div>
                             <div class='mb-3'>
                                 <label for='Username' class='form-label'>Username:</label>

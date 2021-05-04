@@ -23,7 +23,7 @@
                         exit;
                     } else {
                         $id = $results->fetch_object()->id;
-                        header("Location: admin.php?id=".$id);
+                        header("Location: admin.php");
                     }
                     break;
                 case 'nurse':

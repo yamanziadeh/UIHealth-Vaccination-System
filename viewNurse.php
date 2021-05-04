@@ -30,8 +30,8 @@
                     <center><h3 class='card-title'>$row->FName $row->LName</h3></center>");
         print("<div id='nurseInfo'>");
         print("<b>Name:</b> $row->FName $row->MI $row->LName <br>");
-        print("<b>Address:</b> $row->Address <br>");
-        print("<b>Age:</b> $row->Age <br>");
+        print("<b>Address:</b> $row->address <br>");
+        print("<b>Age:</b> $row->age <br>");
         print("<b>Gender:</b> $row->gender <br>");
         print("<b>Phone Number:</b> $row->phoneNum <br>");
         print("<b>Vaccine Given:</b> $row->vGiven <br>");

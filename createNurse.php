@@ -18,7 +18,7 @@ $phoneNum = $_POST["phoneNum"];
 $Username = $_POST["Username"];
 $Password = $_POST["Password"];
 
-$myQ = "insert into nurse (`FName`, `LName`, `MI`, `Address`, `Age`, `gender`, `phoneNum`, `username`, `password`) values ('$FName', '$LName', '$MI', '$Address', '$Age', '$Gender', '$phoneNum', '$Username', '$Password')";
+$myQ = "insert into nurse (`FName`, `LName`, `MI`, `address`, `age`, `gender`, `phoneNum`, `username`, `password`) values ('$FName', '$LName', '$MI', '$Address', '$Age', '$Gender', '$phoneNum', '$Username', '$Password')";
 
 $results = $conn->query($myQ);
 
