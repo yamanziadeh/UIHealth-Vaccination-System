@@ -33,7 +33,7 @@
             $Password = $_POST["Password"];
     
             $myQ = "update nurse
-    set FName = '$FName', LName = '$LName', MI = '$MI', Address = '$Address', Age = '$Age', gender = '$Gender', phoneNum = '$phoneNum', username = '$Username', password = '$Password' 
+    set FName = '$FName', LName = '$LName', MI = '$MI', Age = '$Age', gender = '$Gender', username = '$Username', password = '$Password' 
     where id='$id'";
     
             $results = $conn->query($myQ);
@@ -67,7 +67,7 @@
                             </div>
                             <div class='mb-3'>
                                 <label for='Address' class='form-label'>Address:</label>
-                                <input type='Address' name='Address'  value = '$row->Address' class='form-control' id='Address'>
+                                <input type='Address' name='Address'  value = '$row->Address' class='form-control' id='Address' disabled>
                             </div>
                             <div class='mb-3'>
                                 <label for='Age' class='form-label'>Age:</label>
@@ -79,7 +79,7 @@
                             </div>
                             <div class='mb-3'>
                                 <label for='phoneNum' class='form-label'>Phone Number:</label>
-                                <input type='phoneNum' name='phoneNum' value = '$row->phoneNum' class='form-control' id='phoneNum'>
+                                <input type='phoneNum' name='phoneNum' value = '$row->phoneNum' class='form-control' id='phoneNum' disabled>
                             </div>
                             <div class='mb-3'>
                                 <label for='Username' class='form-label'>Username:</label>

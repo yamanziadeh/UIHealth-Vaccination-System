@@ -17,7 +17,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">id</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@
                 <br>
                 <div class = "card">
                     <div class="card-body">
-                    <center><h3 class="card-title">Add Nurse</h3></center>
+                    <center><h4 class="card-title">Add Nurse</h4></center>
                     <form action="createNurse.php" method="POST">
                             <div class="mb-3">
                                 <label for="FName" class="form-label">First Name:</label>
@@ -90,7 +90,93 @@
                 </div>
             </div>
             <div>
-                <center><h3>Vaccines</h3></center>
+                <div id="forms">
+                    <div id="nurseForms">
+                        <center><h3>Patients</h3></center>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                                $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
+
+                                $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
+                                if($conn->connect_error) 
+                                {
+                                    echo "Error: could not connect to the DB";
+                                    exit;
+                                }
+                                $myQ = "select * from patient";
+                                $results = $conn->query($myQ);
+                                while($row = $results->fetch_object()){
+                                    echo "<tr><th>$row->id</th>
+                                    <td>$row->FName $row->LName</td>
+                                    </tr>";
+                                }
+
+                                $conn->close();
+                            ?>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class = "card">
+                            <div class="card-body">
+                            <center><h4 class="card-title">View Nurse</h4></center>
+                            <form action="viewNurse.php" method="POST">
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Nurse ID:</label>
+                                        <input type="id" name="id" class="form-control" id="id">
+                                    </div>
+                                    <input type="submit" value="View" class="btn btn-primary">
+                            </form>
+                            </div>
+                        </div>
+                        <br>
+                        <div class = "card">
+                            <div class="card-body">
+                            <center><h4 class="card-title">Update Nurse</h4></center>
+                            <form action="updateNurse.php" method="GET">
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Nurse ID:</label>
+                                        <input type="id" name="id" class="form-control" id="id">
+                                    </div>
+                                    <input type="submit" value="Update" class="btn btn-primary">
+                            </form>
+                            </div>
+                        </div>
+                        <br>
+                        <div class = "card">
+                            <div class="card-body">
+                            <center><h4 class="card-title">Delete Nurse</h4></center>
+                            <form action="deleteNurse.php" method="POST">
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Nurse ID:</label>
+                                        <input type="id" name="id" class="form-control" id="id">
+                                    </div>
+                                    <input type="submit" value="Delete" class="btn btn-primary">
+                            </form>
+                            </div>
+                        </div>
+                        <br>
+                        <div class = "card">
+                            <div class="card-body">
+                                <center><h4 class="card-title">View Patient</h4></center>
+                                <form action="viewPatient.php" method="POST">
+                                        <div class="mb-3">
+                                            <label for="id" class="form-label">Patient ID:</label>
+                                            <input type="id" name="id" class="form-control" id="id">
+                                        </div>
+                                        <input type="submit" value="View Info" class="btn btn-primary">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="vaccineForms">
+                    <center><h3>Vaccines</h3></center>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -129,64 +215,9 @@
                      </tbody>
                 </table>
                 <br>
-                <div id="forms">
-                    <div id="nurseForms">
                         <div class = "card">
                             <div class="card-body">
-                            <center><h3 class="card-title">View Nurse</h3></center>
-                            <form action="viewNurse.php" method="POST">
-                                    <div class="mb-3">
-                                        <label for="id" class="form-label">Nurse ID:</label>
-                                        <input type="id" name="id" class="form-control" id="id">
-                                    </div>
-                                    <input type="submit" value="View" class="btn btn-primary">
-                            </form>
-                            </div>
-                        </div>
-                        <br>
-                        <div class = "card">
-                            <div class="card-body">
-                            <center><h3 class="card-title">Update Nurse</h3></center>
-                            <form action="updateNurse.php" method="GET">
-                                    <div class="mb-3">
-                                        <label for="id" class="form-label">Nurse ID:</label>
-                                        <input type="id" name="id" class="form-control" id="id">
-                                    </div>
-                                    <input type="submit" value="Update" class="btn btn-primary">
-                            </form>
-                            </div>
-                        </div>
-                        <br>
-                        <div class = "card">
-                            <div class="card-body">
-                            <center><h3 class="card-title">Delete Nurse</h3></center>
-                            <form action="deleteNurse.php" method="POST">
-                                    <div class="mb-3">
-                                        <label for="id" class="form-label">Nurse ID:</label>
-                                        <input type="id" name="id" class="form-control" id="id">
-                                    </div>
-                                    <input type="submit" value="Delete" class="btn btn-primary">
-                            </form>
-                            </div>
-                        </div>
-                        <br>
-                        <div class = "card">
-                            <div class="card-body">
-                                <center><h3 class="card-title">View Patient</h3></center>
-                                <form action="viewPatient.php" method="POST">
-                                        <div class="mb-3">
-                                            <label for="id" class="form-label">Patient ID:</label>
-                                            <input type="id" name="id" class="form-control" id="id">
-                                        </div>
-                                        <input type="submit" value="View Info" class="btn btn-primary">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="vaccineForms">
-                        <div class = "card">
-                            <div class="card-body">
-                                <center><h3 class="card-title">Add Vaccine</h3></center>
+                                <center><h4 class="card-title">Add Vaccine</h4></center>
                                 <form action="addVaccine.php" method="POST">
                                         <div class="mb-3">
                                             <label for="VName" class="form-label">Vaccine Name:</label>
@@ -207,7 +238,7 @@
                         <br>
                         <div class = "card">
                             <div class="card-body">
-                                <center><h3 class="card-title">Delete Vaccine</h3></center>
+                                <center><h4 class="card-title">Delete Vaccine</h4></center>
                                 <form action="deleteVaccine.php" method="POST">
                                         <div class="mb-3">
                                             <label for="id" class="form-label">Vaccine ID:</label>

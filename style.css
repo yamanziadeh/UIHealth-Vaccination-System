@@ -34,7 +34,7 @@ div#admin{
 
 div#forms{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 400px auto;
     column-gap: 50px;
 }
 
