@@ -32,10 +32,4 @@ $conn->close();
 if (isset($_SERVER["HTTP_REFERER"])) {
     header("Location: " . $_SERVER["HTTP_REFERER"]);
 }
-
-/* 
-INSERT INTO patient (`SSN`,`FName`, `LName`, `MI`, `medicalHistory`, `address`, `age`, `gender`, `race`, `occupation`, `phoneNum`, `username`, `password`) 
-VALUES (333445555, "Yaman", "Ziadeh", "A", "Healthy", "213 southnorth St.", 20, "Other", "White", "Builder", 7082151497, "tMe", "patient")
-
-*/
 ?>
