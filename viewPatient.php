@@ -25,6 +25,13 @@
         $myQ = "select * from patient where id = '$id'";
         $results = $conn->query($myQ);
         $row = $results->fetch_object();
+
+        $myQ = "select VName, CompName from vaccine where id = '$row->vID'";
+        $results = $conn->query($myQ);
+
+        $vaccine = $results->fetch_object();
+
+        
         print("<br><div id='nurseInfo' class = 'card'>
                     <div class='card-body'>
                     <center><h3 class='card-title'>$row->FName $row->LName</h3></center>");
@@ -37,7 +44,7 @@
         print("<b>Occupation:</b> $row->occupation <br>");
         print("<b>Gender:</b> $row->gender <br>");
         print("<b>Phone Number:</b> $row->phoneNum <br>");
-        print("<b>Vaccine Taken:</b> $row->vTaken <br>");
+        print("<b>Vaccine Taken:</b> $vaccine->VName -  $vaccine->CompName <br>");
         print("<b>Username:</b> $row->username <br>");
         print("<b>Password:</b> $row->password <br>");
         print("<b>Medical History:</b> $row->medicalHistory <br>");

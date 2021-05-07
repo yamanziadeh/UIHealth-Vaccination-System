@@ -7,9 +7,10 @@
         </style>
     </head>
     <body>
+    
     <?php
 
-    if ($_POST["id"]){
+    if ($_POST["id"] && !$_POST["Month"]){
         $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
 
         $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
@@ -28,8 +29,9 @@
     where id='$id'";
     
             $results = $conn->query($myQ);
-
+            $conn->close();
             header("Location: nurse.php?id=$id");
+            
     };
     ?>
         <div id="header" class="nav">
@@ -49,23 +51,68 @@
                 </div>
                 <br>
                 <div class = "card">
+                <div class="card-body">
+                    <center><h4 class="card-title">Schedule</h4></center>
+                    <form action="nurseSchedule.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $_GET["id"] ?>">
+                        <div class="mb-3">
+                        <select class="form-select" name="Month" id="Month">
+                            <option selected>Month</option>
+                            <?php for ($i = 0; $i < 12; $i++){
+                                $a = $i + 1;
+                                echo "<option value='$a'>$a</option>";
+                            }?>
+                        </select>
+                        <select class="form-select" name="Day" id="Day">
+                            <option selected>Day</option>
+                            <?php for ($i = 0; $i < 31; $i++){
+                                 $a = $i + 1;
+                                 echo "<option value='$a'>$a</option>";
+                            }?>
+                        </select>
+                        <select class="form-select" name="Hour" id="Hour">
+                            <option selected>Hour</option>
+                            <?php for ($i = 0; $i < 24; $i++){
+                                echo "<option value='$i'>$i</option>";
+                            }?>
+                        </select>
+                        </div>
+                        
+                        <input type="submit" value="Schedule" class="btn btn-primary">
+                    </form>
+                </div>
+                </div>
+                <br>
+                <div class = "card">
+                    <div class="card-body">
+                    <center><h4 class="card-title">Delete Schedule</h4></center>
+                    <form action="nurseSchedule.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $_GET["id"] ?>">
+                            <div class="mb-3">
+                                <label for="schID" class="form-label">Time slot ID:</label>
+                                <input type="schID" name="schID" class="form-control" id="schID">
+                            </div>
+                            <input type="submit" value="Delete" class="btn btn-primary">
+                    </form>
+                    </div>
+                </div>
+            <br>
+                <div class = "card">
                     <div class="card-body">
                         <center><h4 class="card-title">Record Vaccination</h4></center>
                         <form action="recordVaccine.php" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $_GET["id"] ?>">
                                 <div class="mb-3">
-                                    <label for="id" class="form-label">Patient ID:</label>
-                                    <input type="id" name="id" class="form-control" id="id">
+                                    <label for="pID" class="form-label">Patient ID:</label>
+                                    <input type="pID" name="pID" class="form-control" id="pID">
                                 </div>
                                 <div class="mb-3">
-                                    <select class="form-select" name="role" id="role">
-                                        <option selected>Dose</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
+                                    <label for="vID" class="form-label">Vaccine ID:</label>
+                                    <input type="vID" name="vID" class="form-control" id="vID">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="id" class="form-label">Vaccine ID:</label>
-                                    <input type="id" name="id" class="form-control" id="id">
+                                    <label for="schID" class="form-label">Time slot ID:</label>
+                                    <input type="schID" name="schID" class="form-control" id="schID">
                                 </div>
                                 <input type="submit" value="Submit" class="btn btn-primary">
                         </form>
@@ -114,6 +161,38 @@
                 <br>
             </div>
             <div>
+            <center><h3>Schedule</h3></center>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Time Slot</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                                $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
+
+                                $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
+                                if($conn->connect_error) 
+                                {
+                                    echo "Error: could not connect to the DB";
+                                    exit;
+                                }
+                                $id = $_GET["id"];
+                                $myQ = "select * from records join nrecords where nrecords.timeSlotID = records.ID and nID = $id";
+                                $results = $conn->query($myQ);
+                                while($row = $results->fetch_object()){
+                                    echo "<tr><th>$row->ID</th>
+                                    <td>$row->timeSlot</td>
+                                    </tr>";
+                                }
+
+                                $conn->close();
+                            ?>
+                            </tbody>
+                        </table>
+                        <br>
             <center><h3>Vaccines</h3></center>
                 <table class="table table-striped">
                     <thead>
