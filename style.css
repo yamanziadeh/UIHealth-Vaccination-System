@@ -19,7 +19,7 @@ button, input[type="submit"]{
     border: none;
 }
 
-input[value="Delete"]{
+input[value="Delete"], input[value="Cancel"]{
     background-color: rgb(186, 18, 18) !important;
 }
 

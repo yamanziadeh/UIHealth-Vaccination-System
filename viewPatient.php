@@ -26,11 +26,6 @@
         $results = $conn->query($myQ);
         $row = $results->fetch_object();
 
-        $myQ = "select VName, CompName from vaccine where id = '$row->vID'";
-        $results = $conn->query($myQ);
-
-        $vaccine = $results->fetch_object();
-
         
         print("<br><div id='nurseInfo' class = 'card'>
                     <div class='card-body'>
@@ -44,10 +39,19 @@
         print("<b>Occupation:</b> $row->occupation <br>");
         print("<b>Gender:</b> $row->gender <br>");
         print("<b>Phone Number:</b> $row->phoneNum <br>");
-        print("<b>Vaccine Taken:</b> $vaccine->VName -  $vaccine->CompName <br>");
         print("<b>Username:</b> $row->username <br>");
         print("<b>Password:</b> $row->password <br>");
-        print("<b>Medical History:</b> $row->medicalHistory <br>");
+        print("<b>Medical History:</b> $row->medicalHistory <br><br>");
+
+        $myQ = "select * from history where pID = '$id'";
+        $results = $conn->query($myQ);
+
+        print("<b>Vaccine Taken:</b> $row->vTaken<br>");
+        print("<b>Dose #:</b> $row->currDose<br>");
+        print("<b>Vaccine History:</b><br>");
+        while ($row2 = $results->fetch_object()){
+            print(" - Took dose with nurse $row2->nID On $row2->timeSlot<br>");
+        }
         print("</div></div>");
         $conn->close();
         ?>

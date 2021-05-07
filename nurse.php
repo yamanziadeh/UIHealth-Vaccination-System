@@ -85,14 +85,14 @@
                 <br>
                 <div class = "card">
                     <div class="card-body">
-                    <center><h4 class="card-title">Delete Schedule</h4></center>
+                    <center><h4 class="card-title">Cancel Schedule</h4></center>
                     <form action="nurseSchedule.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $_GET["id"] ?>">
                             <div class="mb-3">
                                 <label for="schID" class="form-label">Time slot ID:</label>
                                 <input type="schID" name="schID" class="form-control" id="schID">
                             </div>
-                            <input type="submit" value="Delete" class="btn btn-primary">
+                            <input type="submit" value="Cancel" class="btn btn-primary">
                     </form>
                     </div>
                 </div>
