@@ -19,16 +19,17 @@
             }
             $id = $_POST["id"];
             $time = $_POST["schID"];
+            $vID = $_POST["vID"];
 
             $schID = $conn->query("select ID from records where timeSlot='$time'")->fetch_object()->ID;
 
-            $myQ = "insert into precords(`pID`, `timeSlotID`) values ('$id','$schID')";
+            $myQ = "insert into precords(`pID`, `timeSlotID`, `vID`) values ('$id','$schID','$vID')";
             
             $result = $conn->query($myQ);   
            
             $myQ = "update vaccine
             set Availability = Availability-1, OnHold = OnHold+1
-            where ID = '1'";
+            where ID = '$vID'";
 
             $conn->query($myQ);
 
@@ -61,6 +62,10 @@
                         <center><h4 class="card-title">Schedule</h4></center>
                         <form action="patient.php" method="POST">
                             <input type="hidden" name="id" value="<?php echo $_GET["id"] ?>">
+                            <div class="mb-3">
+                                <label for="vID" class="form-label">Vaccine ID:</label>
+                                <input type="vID" name="vID" class="form-control" id="vID">
+                            </div>
                             <div class="mb-3">
                             <select class="form-select" name="schID" id="schID">
                                 <option selected>Available Time Slots</option>
@@ -108,12 +113,46 @@
                 </div>
             </div>
         <div>
+        <center><h3>Vaccines</h3></center>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";
+
+                        $conn = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
+                        if($conn->connect_error) 
+                        {
+                            echo "Error: could not connect to the DB";
+                            exit;
+                        }
+                        $myQ = "select * from vaccine";
+                        $results = $conn->query($myQ);
+                        while($row = $results->fetch_object()){
+                            echo "<tr><th>$row->VName</th>
+                            <td>$row->CompName</td>
+                            <td>$row->id</td>
+                            </tr>";
+                        }
+
+                        $conn->close();
+                    ?>
+                     </tbody>
+                </table>
+                <br>
                 <center><h4>My Schedule</h4></center>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Time Slot</th>
+                                <th scope="col">Vaccine ID</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,6 +171,7 @@
                                 while($row = $results->fetch_object()){
                                     echo "<tr><th>$row->ID</th>
                                     <td>$row->timeSlot</td>
+                                    <td>$row->vID</td>
                                     </tr>";
                                 }
 

@@ -34,7 +34,6 @@
         print("<b>Age:</b> $row->age <br>");
         print("<b>Gender:</b> $row->gender <br>");
         print("<b>Phone Number:</b> $row->phoneNum <br>");
-        print("<b>Vaccine Given:</b> $row->vGiven <br>");
         print("<b>Username:</b> $row->username <br>");
         print("<b>Password:</b> $row->password <br>");
         print("</div></div>");

@@ -13,12 +13,13 @@ $id = $_POST["id"];
 if ($_POST['schID']){
     $schID = $_POST['schID'];
     
+    $vID = $conn->query("select vID from precords where pID = '$id' and timeSlotID = '$schID'")->fetch_object()->vID;
     $myQ = "delete from precords where pID = '$id' and timeSlotID = '$schID'";
     $conn->query($myQ);
 
     $myQ = "update vaccine
     set Availability = Availability+1, OnHold = OnHold-1
-    where ID = '1'";
+    where ID = '$vID'";
 
     $conn->query($myQ);
 }

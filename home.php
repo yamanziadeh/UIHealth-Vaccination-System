@@ -65,6 +65,7 @@
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>
+
         <div id="homeDiv">
         <div>
             <div class = "card">
