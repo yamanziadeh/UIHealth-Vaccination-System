@@ -7,6 +7,7 @@
         </style>
     </head>
     <body>
+    <a style="position:fixed; bottom: 15px; left: 20px; color: #129ABA" href="home.php">Home</a>
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>
@@ -50,7 +51,8 @@
         print("<b>Dose #:</b> $row->currDose<br>");
         print("<b>Vaccine History:</b><br>");
         while ($row2 = $results->fetch_object()){
-            print(" - Took dose with nurse $row2->nID On $row2->timeSlot<br>");
+            $nurseName = $conn->query("select * from nurse where id='$row2->nID'")->fetch_object();
+            print(" - Took dose with $nurseName->FName $nurseName->LName On $row2->timeSlot<br>");
         }
         print("</div></div>");
         $conn->close();

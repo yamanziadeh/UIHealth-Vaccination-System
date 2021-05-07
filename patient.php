@@ -7,6 +7,7 @@
         </style>
     </head>
     <body>
+    <a style="position:fixed; bottom: 15px; left: 20px; color: #129ABA" href="home.php">Home</a>
     <?php
         if ($_POST["schID"]){
             $dbhost = "localhost";$dbuser = "root";$dbpwd = "root";$dbname = "Project";

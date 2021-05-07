@@ -62,6 +62,7 @@
         </style>
     </head>
     <body>
+    <a style="position:fixed; bottom: 15px; left: 20px; color: #129ABA" href="home.php">Home</a>
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>

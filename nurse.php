@@ -7,7 +7,7 @@
         </style>
     </head>
     <body>
-    
+    <a style="position:fixed; bottom: 15px; left: 20px; color: #129ABA" href="home.php">Home</a>
     <?php
 
     if ($_POST["id"] && !$_POST["Month"]){

@@ -10,6 +10,7 @@
         <div id="header" class="nav">
             <img class="mx-auto" src="logo.png" alt="">
         </div>
+        <a style="position:fixed; bottom: 15px; left: 20px; color: #129ABA" href="home.php">Home</a>
         <center><h2><b>Welcome Admin!</b></h2></center>
         <div id="admin">
             <div>
